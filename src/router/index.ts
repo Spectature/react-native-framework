@@ -5,6 +5,8 @@ export type RootStackParamList = {
   Home: undefined;
   Demo: undefined;
   ApiExample: undefined;
+  UIComponents: undefined;
+  ChartExample: undefined;
   // 在这里添加更多路由...
 };
 
@@ -26,6 +28,8 @@ export interface RouteConfig {
 import HomeScreen from '../pages/home';
 import DemoScreen from '../pages/demo';
 import ApiExampleScreen from '../pages/api-example';
+import UIComponentsScreen from '../pages/ui-components';
+import ChartExampleScreen from '../pages/chart-example';
 import React from "react";
 
 // 路由表配置
@@ -49,6 +53,20 @@ const routes: RouteConfig[] = [
     component: ApiExampleScreen,
     options: {
       title: 'API示例'
+    }
+  },
+  {
+    name: 'UIComponents',
+    component: UIComponentsScreen,
+    options: {
+      title: '小树UI组件'
+    }
+  },
+  {
+    name: 'ChartExample',
+    component: ChartExampleScreen,
+    options: {
+      title: 'ECharts图表'
     }
   },
   // 可以在这里添加更多路由...

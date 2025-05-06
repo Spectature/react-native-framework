@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, useColorScheme, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, useColorScheme, TextInput, ScrollView } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../router';
@@ -52,9 +52,12 @@ const HomeScreen = observer(() => {
   };
 
   return (
-    <View style={[styles.container, {
-      backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    }]}>
+    <ScrollView 
+      style={[styles.scrollContainer, {
+        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+      }]}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Text style={[styles.title, {
         color: isDarkMode ? Colors.white : Colors.black,
       }]}>React Native 首页</Text>
@@ -153,7 +156,21 @@ const HomeScreen = observer(() => {
       >
         <Text style={styles.buttonText}>跳转到API示例页面</Text>
       </TouchableOpacity>
-    </View>
+
+      <TouchableOpacity 
+        style={styles.navigationButton}
+        onPress={() => navigation.navigate('UIComponents')}
+      >
+        <Text style={styles.buttonText}>跳转到UI组件页面</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity 
+        style={styles.navigationButton}
+        onPress={() => navigation.navigate('ChartExample')}
+      >
+        <Text style={styles.buttonText}>跳转到ECharts图表页面</Text>
+      </TouchableOpacity>
+    </ScrollView>
   );
 });
 
@@ -182,6 +199,15 @@ const EventReceiver = () => {
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flex: 1,
+  },
+  contentContainer: {
+    alignItems: 'center',
+    padding: 20,
+    paddingTop: 40,
+    paddingBottom: 60,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -307,5 +333,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen; 
 export default HomeScreen; 

@@ -31,7 +31,7 @@ const ApiExampleScreen = observer(() => {
   
   // HTTP hooks示例
   const getTodos = useGet('https://jsonplaceholder.typicode.com/todos');
-  const getUser = useGet(`/111`);
+  const getUser = useGet(`https://jsonplaceholder.typicode.com/users/${userId}`);
   const createPost = usePost('https://jsonplaceholder.typicode.com/posts');
   const updatePost = usePut(`https://jsonplaceholder.typicode.com/posts/${postId}`);
   const deletePost = useDelete(`https://jsonplaceholder.typicode.com/posts/${postId}`);
@@ -63,7 +63,7 @@ const ApiExampleScreen = observer(() => {
   const handleGetTodos = async () => {
     try {
       const data = await getTodos.execute();
-      setResponse({ method: 'GET', url: '/todos', data: data.slice(0, 5) });
+      setResponse({ method: 'GET', url: '/todos', data: data.data.slice(0, 5) });
     } catch (error) {
       console.error('获取todos失败', error);
     }
